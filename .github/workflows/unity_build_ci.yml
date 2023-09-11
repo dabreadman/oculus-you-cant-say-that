@@ -1,36 +1,34 @@
-name: Unity Actions
+name: Build project
 
-on:
-  pull_request: {}
-  push: {}
-  workflow_dispatch: {}
+on: [push, pull_request, workflow_dispatch]
 
-### Refer to https://game.ci/docs/github/getting-started
 jobs:
-  build:
+  buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         targetPlatform:
-          - Android
+          - Android # Build an Android .apk standalone app.
     steps:
       - uses: actions/checkout@v3
         with:
+          fetch-depth: 0
           lfs: true
       - uses: actions/cache@v3
         with:
           path: Library
           key: Library-${{ matrix.targetPlatform }}
-      - uses: game-ci/unity-builder@v2
+          restore-keys: Library-
+      - if: matrix.targetPlatform == 'Android'
+        uses: jlumbroso/free-disk-space@v1.2.0
+      - uses: game-ci/unity-builder@v3
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
       - uses: actions/upload-artifact@v3
         with:
           name: Build-${{ matrix.targetPlatform }}
-          path: build
+          path: build/${{ matrix.targetPlatform }}
