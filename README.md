@@ -18,4 +18,4 @@ A 2-day hackathon to (re)create the classical game of [taboo](https://en.wikiped
   <img width="1320" alt="image" src="https://github.com/dabreadman/oculus-you-cant-say-that/assets/43485369/2dffb9d2-d7d4-462b-948e-a4a47506c47f">
 
 # Unity Guide
-- ~45 mins, [Unity basics](https://www.youtube.com/watch?v=XtQMytORBmM)
+- ~45 minutes, [Unity basics](https://www.youtube.com/watch?v=XtQMytORBmM)
