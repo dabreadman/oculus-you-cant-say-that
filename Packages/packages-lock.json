@@ -7,20 +7,6 @@
       "dependencies": {},
       "hash": "9ce49ba7e429f87acb7b1239f50d605887ff694a"
     },
-    "com.oculus.integration": {
-      "version": "file:Oculus",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {
-        "com.unity.xr.oculus": "3.2.2"
-      }
-    },
-    "com.photon.voice2": {
-      "version": "file:Photon",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
     "com.unity.burst": {
       "version": "1.6.6",
       "depth": 1,
